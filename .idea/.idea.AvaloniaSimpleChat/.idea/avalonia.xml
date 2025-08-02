@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="AvaloniaSimpleChat/App.axaml" value="AvaloniaSimpleChat.Browser/AvaloniaSimpleChat.Browser.csproj" />
+        <entry key="AvaloniaSimpleChat/Views/ChatView.axaml" value="AvaloniaSimpleChat.Browser/AvaloniaSimpleChat.Browser.csproj" />
+        <entry key="AvaloniaSimpleChat/Views/LoginView.axaml" value="AvaloniaSimpleChat.Browser/AvaloniaSimpleChat.Browser.csproj" />
+        <entry key="AvaloniaSimpleChat/Views/MainView.axaml" value="AvaloniaSimpleChat.Browser/AvaloniaSimpleChat.Browser.csproj" />
+        <entry key="AvaloniaSimpleChat/Views/MainWindow.axaml" value="AvaloniaSimpleChat.Browser/AvaloniaSimpleChat.Browser.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

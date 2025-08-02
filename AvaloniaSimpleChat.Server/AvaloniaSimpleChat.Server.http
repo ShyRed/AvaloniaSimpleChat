@@ -1,0 +1,6 @@
+@AvaloniaSimpleChat.Server_HostAddress = http://localhost:5062
+
+GET {{AvaloniaSimpleChat.Server_HostAddress}}
+Accept: application/json
+
+###

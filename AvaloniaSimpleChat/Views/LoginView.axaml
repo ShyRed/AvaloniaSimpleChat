@@ -1,0 +1,40 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaSimpleChat.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaSimpleChat.Views.LoginView"
+             x:DataType="vm:LoginViewModel">
+    
+    <StackPanel Margin="20" Spacing="15" Width="300">
+        <TextBlock Text="Welcome to SimpleChat"
+                 FontSize="24"
+                 FontWeight="Bold"
+                 HorizontalAlignment="Center"/>
+
+        <TextBlock Text="Enter your credentials to login. If you don't have an account, one will be created automatically."
+                 TextWrapping="Wrap"
+                 HorizontalAlignment="Center"
+                 Margin="0,0,0,20"/>
+
+        <TextBox Watermark="Server URL"
+                 Text="{Binding ServerUrl}"
+                 HorizontalAlignment="Stretch"/>
+        
+        <TextBox Watermark="Username"
+                 Text="{Binding Username}"
+                 HorizontalAlignment="Stretch"/>
+
+        <TextBox Watermark="Password"
+                 Text="{Binding Password}"
+                 PasswordChar="●"
+                 HorizontalAlignment="Stretch"/>
+
+        <Button Content="Login"
+                HorizontalAlignment="Center"
+                Padding="30,10"
+                Command="{Binding LoginCommand}"/>
+    </StackPanel>
+    
+</UserControl>
