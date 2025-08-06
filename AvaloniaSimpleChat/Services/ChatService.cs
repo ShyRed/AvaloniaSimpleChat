@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Threading.Tasks;
+using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.AspNetCore.SignalR.Client;
 
 namespace AvaloniaSimpleChat.Services;
 
+public record MessageReceivedMessage(string Username, string Message); 
+public record UserConnectedMessage(string Username);
+public record UserDisconnectedMessage(string Username);
+
 public interface IChatService
 {
-    event EventHandler<(string Username, string Message)> MessageReceived;
-    event EventHandler<string> UserConnected;
-    event EventHandler<string> UserDisconnected;
-    
     Task ConnectAsync(string serverUrl, string token);
     Task DisconnectAsync();
     Task SendMessageAsync(string message);
@@ -18,13 +19,15 @@ public interface IChatService
 
 public class ChatService : IChatService
 {
-    private HubConnection? _hubConnection;
-    
-    public event EventHandler<(string Username, string Message)>? MessageReceived;
-    public event EventHandler<string>? UserConnected;
-    public event EventHandler<string>? UserDisconnected;
-
     public bool IsConnected => _hubConnection?.State == HubConnectionState.Connected;
+
+    private HubConnection? _hubConnection;
+    private readonly IMessenger _messenger;
+
+    public ChatService(IMessenger messenger)
+    {
+        _messenger = messenger;
+    }
 
     public async Task ConnectAsync(string serverUrl, string token)
     {
@@ -39,17 +42,17 @@ public class ChatService : IChatService
         // Set up message handlers
         _hubConnection.On<string, string>("ReceiveMessage", (username, message) =>
         {
-            MessageReceived?.Invoke(this, (username, message));
+            _messenger.Send(new MessageReceivedMessage(username, message));
         });
 
         _hubConnection.On<string>("UserConnected", (username) =>
         {
-            UserConnected?.Invoke(this, username);
+            _messenger.Send(new UserConnectedMessage(username));
         });
 
         _hubConnection.On<string>("UserDisconnected", (username) =>
         {
-            UserDisconnected?.Invoke(this, username);
+            _messenger.Send(new UserDisconnectedMessage(username));
         });
 
         await _hubConnection.StartAsync();

@@ -5,7 +5,28 @@
              RequestedThemeVariant="Default">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
+     <Application.Resources>
+         <ResourceDictionary>
+             <ResourceDictionary.ThemeDictionaries>
+                 <ResourceDictionary x:Key="Light">
+                     <SolidColorBrush x:Key="ChatMessageBackground" Color="#F0F0F0"/>
+                     <SolidColorBrush x:Key="ChatMessageBorder" Color="#E0E0E0"/>
+                     <SolidColorBrush x:Key="ChatMessageText" Color="#000000"/>
+                     <SolidColorBrush x:Key="ChatUsernameText" Color="#2B5797"/>
+                 </ResourceDictionary>
+                 <ResourceDictionary x:Key="Dark">
+                     <SolidColorBrush x:Key="ChatMessageBackground" Color="#2D2D2D"/>
+                     <SolidColorBrush x:Key="ChatMessageBorder" Color="#404040"/>
+                     <SolidColorBrush x:Key="ChatMessageText" Color="#FFFFFF"/>
+                     <SolidColorBrush x:Key="ChatUsernameText" Color="#69A3FF"/>
+                 </ResourceDictionary>
+             </ResourceDictionary.ThemeDictionaries>
+         </ResourceDictionary>
+     </Application.Resources>
+             
     <Application.Styles>
-        <FluentTheme />
+        <FluentTheme/>
+        <StyleInclude Source="Assets/Styles.axaml" />
     </Application.Styles>
+             
 </Application>

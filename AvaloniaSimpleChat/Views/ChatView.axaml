@@ -6,5 +6,42 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="AvaloniaSimpleChat.Views.ChatView"
              x:DataType="vm:ChatViewModel">
-    Welcome to the Chat!
+    <DockPanel>
+        
+        <DockPanel DockPanel.Dock="Bottom">
+            <Button DockPanel.Dock="Right"
+                    Command="{Binding SendMessageCommand}">
+                Send
+            </Button>
+            <TextBox Text="{Binding Message}"
+                     MaxLength="256"
+                     Focusable="True"
+                     Name="MessageTextBox">
+                <TextBox.KeyBindings>
+                    <KeyBinding Command="{Binding SendMessageCommand}"
+                                Gesture="Enter"/>
+                </TextBox.KeyBindings>
+            </TextBox>
+        </DockPanel>
+        
+        <ScrollViewer Name="ChatScrollViewer">
+            <StackPanel>
+                <ItemsControl ItemsSource="{Binding Messages}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Classes="chat-bubble">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Username}"
+                                               Classes="chat-message"/>
+                                    <TextBlock Text="{Binding Message}"
+                                               Classes="chat-username"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+        
+    </DockPanel>
 </UserControl>

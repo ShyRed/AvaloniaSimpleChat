@@ -4,6 +4,9 @@
     <option name="projectPerEditor">
       <map>
         <entry key="AvaloniaSimpleChat/App.axaml" value="AvaloniaSimpleChat.Browser/AvaloniaSimpleChat.Browser.csproj" />
+        <entry key="AvaloniaSimpleChat/Assets/Colors.axaml" value="AvaloniaSimpleChat.Browser/AvaloniaSimpleChat.Browser.csproj" />
+        <entry key="AvaloniaSimpleChat/Assets/LightTheme.axaml" value="AvaloniaSimpleChat.Browser/AvaloniaSimpleChat.Browser.csproj" />
+        <entry key="AvaloniaSimpleChat/Assets/Styles.axaml" value="AvaloniaSimpleChat.Browser/AvaloniaSimpleChat.Browser.csproj" />
         <entry key="AvaloniaSimpleChat/Views/ChatView.axaml" value="AvaloniaSimpleChat.Browser/AvaloniaSimpleChat.Browser.csproj" />
         <entry key="AvaloniaSimpleChat/Views/LoginView.axaml" value="AvaloniaSimpleChat.Browser/AvaloniaSimpleChat.Browser.csproj" />
         <entry key="AvaloniaSimpleChat/Views/MainView.axaml" value="AvaloniaSimpleChat.Browser/AvaloniaSimpleChat.Browser.csproj" />

@@ -1,24 +1,24 @@
 ﻿using System;
 using AvaloniaSimpleChat.Messages;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.DependencyInjection;
-using ReactiveUI;
 
 namespace AvaloniaSimpleChat.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {
     private readonly IServiceProvider _serviceProvider;
-    private readonly IMessageBus _messageBus;
+    private readonly IMessenger _messageBus;
     [ObservableProperty] private ViewModelBase _currentPage;
     
-    public MainViewModel(IServiceProvider serviceProvider, IMessageBus messageBus)
+    public MainViewModel(IServiceProvider serviceProvider, IMessenger messageBus)
     {
         _serviceProvider = serviceProvider;
         _messageBus = messageBus;
         CurrentPage = serviceProvider.GetRequiredService<LoginViewModel>();
 
-        _messageBus.Listen<UserLoggedInMessage>()
-            .Subscribe(msg => CurrentPage = serviceProvider.GetRequiredService<ChatViewModel>());
+        _messageBus.Register<UserLoggedInMessage>(this, (s, e) => 
+            CurrentPage = serviceProvider.GetRequiredService<ChatViewModel>());
     }
 }

@@ -13,4 +13,5 @@
     <ItemGroup>
         <ProjectReference Include="..\AvaloniaSimpleChat\AvaloniaSimpleChat.csproj"/>
     </ItemGroup>
+
 </Project>

@@ -6,11 +6,11 @@ using Avalonia.Markup.Xaml;
 using AvaloniaSimpleChat.Services;
 using AvaloniaSimpleChat.ViewModels;
 using AvaloniaSimpleChat.Views;
+using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
-using ReactiveUI;
 
 namespace AvaloniaSimpleChat;
 
@@ -41,7 +41,7 @@ public partial class App : Application
         services.AddSingleton<IRequestAdapter, HttpClientRequestAdapter>();
 
         services.AddSingleton<IChatService, ChatService>();
-        services.AddSingleton<IMessageBus, MessageBus>();
+        services.AddSingleton<IMessenger>(WeakReferenceMessenger.Default);
         
         ServiceProvider serviceProvider = services.BuildServiceProvider();
 

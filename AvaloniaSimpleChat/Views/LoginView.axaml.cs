@@ -9,5 +9,7 @@ public partial class LoginView : UserControl
     public LoginView()
     {
         InitializeComponent();
+
+        this.Loaded += (sender, args) => UsernameTextBox.Focus();
     }
 }
